@@ -1,0 +1,14 @@
+:root {
+  /* background-color: rgb(137, 43, 226); */
+  background-color: #A31ACB;
+  display: flex;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
