@@ -39,6 +39,8 @@ const props = defineProps({
   const currentIndex = ref(0);
   const isFullscreen = ref(false);
   const images = ref([
+    { src: './img/donde_empezo.jpg', title: 'Yo solo quería ayudar a una chica que necesitaba ayuda' },
+    { src: './img/primer_mensaje.jpg', title: 'Pero gracias a ella todo comenzó...' },
     { src: './img/edad_ririna.jpg', title: 'Cuando adiviné tu edad' },
     { src: './img/ririna_vs_seki_terraria.jpg', title: 'La venganza será mía' },
     { src: './img/minecraft_mundo_1.jpg', title: 'Nuestro primer mundo en Minecraft (sale mal)' },

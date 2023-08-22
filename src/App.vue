@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import Carousel from './components/Carousel.vue'
+import ImportantDates from './components/ImportantDates.vue';
 const viewHome = ref(true);
+const showImportantDates = ref(false);
 const showMemories = ref(false);
 const showIArts = ref(false);
 const showMessages = ref(false);
@@ -22,24 +24,41 @@ const memories = () => {
   showIArts.value = false;
   showMessages.value = false;
   viewHome.value = false;
+  showImportantDates.value = false;
+  window.scrollTo(0, 0);
 }
 const volver = () => {
   showMemories.value = false;
   showIArts.value = false;
   showMessages.value = false;
   viewHome.value = true;
+  showImportantDates.value = false;
+  window.scrollTo(0, 0);
 }
 const verGaleria = () => {
   showMemories.value = false;
   showIArts.value = true;
   showMessages.value = false;
   viewHome.value = false;
+  showImportantDates.value = false;
+  window.scrollTo(0, 0);
 }
 const mensajeBonito = () => {
   showMemories.value = false;
   showIArts.value = false;
   showMessages.value = true;
   viewHome.value = false;
+  showImportantDates.value = false;
+  window.scrollTo(0, 0);
+}
+const dates = () => {
+  showImportantDates.value = true;
+  showMemories.value = false;
+  showIArts.value = false;
+  showMessages.value = false;
+  viewHome.value = false;
+  window.scrollTo(0, 0);
+  
 }
 function goToPreviousSlide() {
   currentIndex.value = (currentIndex.value - 1 + images.value.length) % images.value.length;
@@ -51,11 +70,9 @@ function goToNextSlide() {
 
 function openFullscreen(index) {
   currentIndex.value = index;
-  isFullscreen.value = true;
 }
 
 function closeFullscreen() {
-  isFullscreen.value = false;
 }
 </script>
 
@@ -100,6 +117,7 @@ function closeFullscreen() {
         <h2> ¡ESPERO QUE LO DISFRUTES!</h2>
       </div>
       <div class="cont-btns">
+        <button @click="dates">MENSAJITOS DE FECHAS IMPORTANTES</button>
         <button @click="memories">VER GALERÍA DE RECUERDOS</button>
         <button>VER GALERÍA DE IArts</button>
         <button>MENSAJE BONITO DEL DÍA</button>
@@ -107,6 +125,7 @@ function closeFullscreen() {
     </div>
   </div>
   <Carousel v-if="showMemories" :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="mensajeBonito"/>
+  <ImportantDates v-if="showImportantDates" :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="mensajeBonito" />
 </template>
 
 <style lang="scss" scoped>
