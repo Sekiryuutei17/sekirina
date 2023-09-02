@@ -3,5 +3,5 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/sekirina-project/', // reemplaza '01-galeria' con el nombre de tu repositorio en GitHub
+  base: '/sekirina/', // reemplaza '01-galeria' con el nombre de tu repositorio en GitHub
 })
