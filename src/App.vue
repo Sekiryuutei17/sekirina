@@ -82,7 +82,7 @@ function closeFullscreen() {
     <h1 >BIENVENIDA RIRINA</h1>
     <div class="cont-cards">
       <div class="card">
-        <img src="./img//IARTS.jpg" alt="" srcset="">
+        <img src="./img//logocolab.png" alt="" srcset="">
         <p>TUTORIAL IA</p>
       </div>
       <div class="card">
@@ -90,17 +90,21 @@ function closeFullscreen() {
         <p>GALERIA IA</p>
       </div>
       <div class="card">
-        <img src="./img/edad_ririna.jpg" alt="" srcset="">
+        <img src="./img/edad_ririna.jpg" @click="memories" alt="" srcset="">
         <p>GALERIA DE RECUERDOS</p>
       </div>
       <div class="card">
-        <img src="./img/edad_ririna.jpg" alt="" srcset="">
+        <img src="./img/you.jpeg" @click="dates" alt="" srcset="">
         <p>MENSAJITOS IMPORTANTES</p>
       </div>
     </div>
+    <div class="texto">
+      Hola amor! Como te dije hay nueva estructura!<br>
+      EStoy trabajando en complementarla bien, proximamente agregaré el tutorial de la IA.
+    </div>
   </div>
-  <Carousel v-if="showMemories" :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="mensajeBonito"/>
-  <ImportantDates v-if="showImportantDates" :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="mensajeBonito" />
+  <Carousel v-if="showMemories" :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="dates"/>
+  <ImportantDates v-if="showImportantDates" :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="dates" />
 </template>
 
 <style lang="scss" scoped>
