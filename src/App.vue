@@ -79,48 +79,23 @@ function closeFullscreen() {
 <template>
   
   <div class="cont-home" v-if="viewHome">
-    
-    <div class="cont-1">
-      <h1 class="title">💟 BIENVENIDA RIRINA!💟  </h1>
-      <div class="container">
-        <div class="card">
-          <p>
-            Como sabrás, una de mis mayores habilidades es esta, crear sitios web, entonces
-            decidí hacer uno dedicado a: 
-            <ol>
-              <li>Mostrarte cuanto te amo 💕  </li>
-              <li>Dejarte cosas bonitas 💮  </li>
-              <li>Agregar un pequeño espacio para nosotros 💑 </li>
-            </ol>
-          </p>
-        </div>
-        <div class="card">
-          <p>
-            Me gustaría que tanto tu como yo, podamos tener recuerdos hermosos de cada paso que hemos
-            dado en nuestra relación, con nuestras altas y bajas pero que siempre podemos sobrepasar
-            pues somos una pareja increible, que siempre sabe como solucionarlo pues tanto tu cómo yo 
-            tenemos unas ganas increíbles de poder estar juntos 💘 
-
-          </p>
-        </div>
-        <div class="card">
-          <p>
-            Así que para demostarte mi amor, he creado este lugar especial donde guardaremos nuestros
-            momentos que nos gustaría recordar, como lo estoy haciendo yo pues comenzaremos con los 
-            recuerdos que me gustaría atesorar.
-          </p>
-        </div>
+    <h1 >BIENVENIDA RIRINA</h1>
+    <div class="cont-cards">
+      <div class="card">
+        <img src="./img//IARTS.jpg" alt="" srcset="">
+        <p>TUTORIAL IA</p>
       </div>
-    </div>
-    <div class="cont-2">
-      <div class="transition-div">
-        <h2> ¡ESPERO QUE LO DISFRUTES!</h2>
+      <div class="card">
+        <img src="./img//IARTS.jpg" alt="" srcset="">
+        <p>GALERIA IA</p>
       </div>
-      <div class="cont-btns">
-        <button @click="dates">MENSAJITOS DE FECHAS IMPORTANTES</button>
-        <button @click="memories">VER GALERÍA DE RECUERDOS</button>
-        <button>VER GALERÍA DE IArts</button>
-        <button>MENSAJE BONITO DEL DÍA</button>
+      <div class="card">
+        <img src="./img/edad_ririna.jpg" alt="" srcset="">
+        <p>GALERIA DE RECUERDOS</p>
+      </div>
+      <div class="card">
+        <img src="./img/edad_ririna.jpg" alt="" srcset="">
+        <p>MENSAJITOS IMPORTANTES</p>
       </div>
     </div>
   </div>
@@ -129,101 +104,61 @@ function closeFullscreen() {
 </template>
 
 <style lang="scss" scoped>
-.cont-1{  
-  background-color: #A31ACB;
-  padding-bottom: 4em;
-  width: 100%;
-  .title {
-    color: white;
+.cont-home{
+  h1{
+    color:white;
     text-align: center;
     width: 100%;
   }
-  
-  .container {
-    width: 100%;
-    position: relative;
-  }
-  
-  .card {
-    background-color: purple;
-    color: white;
-    margin: 1.5em 0;
-    padding: 1em;
-    font-size: .9em;
-    width: 80%;
-    opacity: 0;
-    animation-duration: 1.5s;
-    animation-fill-mode: forwards;
-  }
-  
-  @keyframes slide-in-left {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slide-in-right {
-    0% {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  .card:nth-child(odd) {
-    animation-name: slide-in-left;
-  }
-  
-  .card:nth-child(even) {
-    animation-name: slide-in-right;
-    margin-left: auto;
-  }
-}
-.cont-2{
-  background-color: purple;
-  .transition-div{
-    background-color:white;
-    border-radius: 1.5em;
-    color: purple;
-    margin: .5em auto;
-    position: relative;
-    padding: 1em;
-    text-align: center;
-    top: -75px;
-    width: min-content;
-    z-index: 50;
-  }
-  .cont-btns{
-    display: block;
-    margin-bottom: 0;
-    padding-bottom: 2em;
-    width: 100%;
-    button{
-      border: 2px solid #A31ACB;
+  .cont-cards{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+    .card{
       border-radius: 1em;
-      color: purple;
-      display: block;
-      font-size: .8em;
-      font-weight: bolder;
+      width: 20%;
       margin: 1em auto;
-      padding: 1em;
-      transition: all .75s;
-      width: 80%;
-      
-    }
-    button:hover{
-        border: 2px solid white;
-        color: white;
-        background-color:purple;
+      height: 15em;
+      img{
+        border-radius: 1em;
+        width:100%;
+        height: 90%;
+        transition: .5s all ease-in-out;
       }
+      img:hover{
+          cursor:pointer;
+          opacity: .5;
+        }
+      p{
+        text-align: center;
+        width: 100%;
+      }
+    }
+
   }
 }
+@media (max-width:650px){
+    .card{
+      margin: 1em auto !important;
+      height: 15em !important;
+      width:40% !important;
+      p{
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+@media (max-width:450px){
+    .card{
+      margin: 1em auto !important;
+      height: 15em !important;
+      width:70% !important;
+      p{
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
 </style>
