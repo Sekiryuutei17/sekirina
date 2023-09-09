@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import Carousel from './components/Carousel.vue'
+import GuideIA from './components/GuideIA.vue'
 import ImportantDates from './components/ImportantDates.vue';
 const viewHome = ref(true);
 const showImportantDates = ref(false);
@@ -8,6 +9,7 @@ const showMemories = ref(false);
 const showIArts = ref(false);
 const showMessages = ref(false);
 const showFullscreen = ref(false);
+const showGuide = ref(false);
 const currentIndex = ref(0);
 const images = ref([
   {src:'./img/edad_ririna.jpg', title:'Cuando adiviné tu edad'},
@@ -25,6 +27,7 @@ const memories = () => {
   showMessages.value = false;
   viewHome.value = false;
   showImportantDates.value = false;
+  showGuide.value = false;
   window.scrollTo(0, 0);
 }
 const volver = () => {
@@ -33,6 +36,7 @@ const volver = () => {
   showMessages.value = false;
   viewHome.value = true;
   showImportantDates.value = false;
+  showGuide.value = false;
   window.scrollTo(0, 0);
 }
 const verGaleria = () => {
@@ -41,6 +45,7 @@ const verGaleria = () => {
   showMessages.value = false;
   viewHome.value = false;
   showImportantDates.value = false;
+  showGuide.value = false;
   window.scrollTo(0, 0);
 }
 const mensajeBonito = () => {
@@ -49,6 +54,7 @@ const mensajeBonito = () => {
   showMessages.value = true;
   viewHome.value = false;
   showImportantDates.value = false;
+  showGuide.value = false;
   window.scrollTo(0, 0);
 }
 const dates = () => {
@@ -57,8 +63,19 @@ const dates = () => {
   showIArts.value = false;
   showMessages.value = false;
   viewHome.value = false;
+  showGuide.value = false;
   window.scrollTo(0, 0);
   
+}
+const iaGuide = () => {
+  showGuide.value = true;
+  showImportantDates.value = false;
+  showMemories.value = false;
+  showIArts.value = false;
+  showMessages.value = false;
+  viewHome.value = false;
+  window.scrollTo(0, 0);
+
 }
 function goToPreviousSlide() {
   currentIndex.value = (currentIndex.value - 1 + images.value.length) % images.value.length;
@@ -82,7 +99,7 @@ function closeFullscreen() {
     <h1 >BIENVENIDA RIRINA</h1>
     <div class="cont-cards">
       <div class="card">
-        <img src="./img//logocolab.png" alt="" srcset="">
+        <img src="./img//logocolab.png" @click="iaGuide" alt="" srcset="">
         <p>TUTORIAL IA</p>
       </div>
       <div class="card">
@@ -105,6 +122,7 @@ function closeFullscreen() {
   </div>
   <Carousel v-if="showMemories" :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="dates"/>
   <ImportantDates v-if="showImportantDates" :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="dates" />
+  <GuideIA v-if="showGuide"  :volver="volver" :ver-galeria="verGaleria" :mensaje-bonito="dates" /> 
 </template>
 
 <style lang="scss" scoped>
@@ -141,6 +159,10 @@ function closeFullscreen() {
       }
     }
 
+  }
+  .texto{
+    margin: 4em auto;
+    width: 90%;
   }
 }
 @media (max-width:650px){
