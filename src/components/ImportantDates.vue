@@ -23,6 +23,30 @@
         💝 
         </div>
     </div>
+    <div class="card">
+        <h4 @click="showFlowers = !showFlowers">21 de Septiembre (hazme click)</h4>
+        <hr>
+        
+        <div v-if="showFlowers" class="cont-flowers">
+          <div v-for="question in questions" class="question">
+            <label for=""> {{ question.question }} </label><br>
+            <input :type=question.type name=""  id="" v-model="question.answer2"><br>
+            <label v-if="showAnswers" for=""> {{ question.answer }} </label>
+          </div>
+          <button @click="showAnswers = !showAnswers">VER RESPUESTAS</button>
+        </div>
+        <button v-if="showAllFlowers" @click="showAllFlowers = false">APAGAR FLORES</button>
+        <div  v-if="showAnswers">
+          No importa cuanto sepas o cuanto no, si sabes mucho de mi, es porque sabes quien soy, si fallaste
+          entonces tenemos una vida entera para conocernos, la idea era otra, queria que por cada respuesta 
+          te llegara una flor amarilla, pero no quiero que tu ramo dependa de algo que no define nuestra
+          relación, a mi me interesa hacerte feliz 💝 💝 💝 💝  <br>
+          Es por eso que te invito a ver lo siguiente <span @click="showAllFlowers = true"> HACIENDO CLICK AQUI </span>
+        </div>
+        <div style="margin:3em;" v-if="showAllFlowers">
+          <Flower/>
+        </div>
+    </div>
     <div class="cont-btns">
         <button @click="volverClicked">VOLVER</button>
         <button @click="verGaleriaClicked">VER GALERÍA DE IArts</button>
@@ -33,6 +57,19 @@
 
 <script setup>
 import { ref } from 'vue';
+import Flower from './Flower.vue'
+const showFlowers = ref(false)
+const showAnswers = ref(false)
+const showAllFlowers = ref(false)
+const questions = ref([
+  {question:"¿Cuántos años tengo?",answer:22,type:"text",answer2:""},
+  {question:"¿Cuándos es mi cumpleaños? DD/MM",answer:"02/09",type:"text",answer2:""},
+  {question:"¿Cuál es mi color favorito?",answer:"Amarillo",type:"text",answer2:""},
+  {question:"¿Cuál es mi anime favorita?",answer:"HighSchool DxD",type:"text",answer2:""},
+  {question:"¿Cuál es mi juego favorito?",answer:"Resident Evil 5",type:"text",answer2:""},
+  {question:"¿A qué me dedico?",answer:"Desarrollador Front-End",type:"text",answer2:""},
+  {question:"¿Quién es el amor de mi vida?",answer:"Tú <3",type:"text",answer2:""}
+])
 const props = defineProps({
   volver: {
     type: Function,
@@ -79,8 +116,24 @@ const mensajeClicked = () => {
 </script>
 
 <style scoped>
+.cont-flowers{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.question{
+  margin: 1em 0;
+  padding:1em;
+  width: fit-content;
+}
+.question input ,.question label{
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  width:80%;
+}
 .cont-dates {
-    margin: 1em auto;
+    margin: 1em;
     width: 90%;
 }
 
@@ -120,9 +173,14 @@ button:hover{
     height: 50px;
     animation: fall linear infinite;
   }
-  
+  @media screen and (max-width:400px){
+    button{
+      width:80%;
+    }
+  }
   @keyframes fall {
     0% { top: -50px; }
     100% { top: 100vh; }
   }
+  
 </style>
